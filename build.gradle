@@ -1,0 +1,46 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.devoted.health'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+def baseName = 'devoted-health'
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': baseName, 'Implementation-Version': version
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-test')
+	implementation('org.springframework.boot:spring-boot-starter-jdbc')
+	runtime ('com.h2database:h2')
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+
+}
+
+compileJava.dependsOn(processResources)
+
+task wrapper(type: Wrapper) { gradleVersion = '4.5.1' }
+
