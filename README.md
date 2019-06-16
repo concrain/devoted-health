@@ -8,12 +8,6 @@ When the jar is run you will see the application go through boot configurations.
 I set it up to enter into a command prompt after spring boot has finished starting.
 The configurations to make this happen are in the Application.class
 
-Sadly I did not have enough time to add create the Transaction Logic. I spent quite a bit
-of time configuring Spring and H2 to work without a web environment. Also I did not figure out
-how to activate H2 while testing. I have test classes but they return a NullPointerException 
-when trying to persist to H2.
-
-
 to build the application:
 
  $ ./gradlew clean
